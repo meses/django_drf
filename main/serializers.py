@@ -1,9 +1,11 @@
 from rest_framework import serializers
 
 from main.models import Course, Lesson, Payments
+from main.validators import validate_link
 
 
 class LessonSerializer(serializers.ModelSerializer):
+    video_link = serializers.CharField(validators=[validate_link])
 
     class Meta:
         model = Lesson
